@@ -1,168 +1,48 @@
-
-	<div class="post">
-		<h1 class="postTitle">
-			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/standardzero/p/10744648.html">7. VIM 系列 - 程序员利器（语法检测、代码块补全、symbol管理、函数跳转）</a>
-		</h1>
-		<div class="clear"></div>
-		<div class="postBody">
-			<div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown"><div class="toc">
-    <p class="toc-title">目录</p>
-    <div class="toc-list">
-        <ul>
-        <li><a href="#语法检查利器-ale">1. 语法检查利器 ale</a></li>
-        <li><a href="#补全代码块">2. 补全代码块</a></li>
-        <li><a href="#symbol-管理器-taglist.vim">3. symbol 管理器 taglist.vim</a></li>
-        <li><a href="#函数跳转">4. 函数跳转</a></li>
-        </ul>
-    </div>
-</div>
-<h1 id="语法检查利器-ale">1. 语法检查利器 ale</h1>
-<p><strong>安装 ale</strong></p>
-<pre><code class="hljs nginx"><span class="hljs-attribute">Plug</span> <span class="hljs-string">'w0rp/ale'</span></code></pre>
-<p><strong>配置</strong></p>
-<ul>
-<li>显示状态栏+不需要高亮行</li>
-</ul>
-<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> g:ale_sign_column_always = <span class="hljs-number">1</span>
-<span class="hljs-keyword">let</span> g:ale_set_highlights = <span class="hljs-number">0</span></code></pre>
-<ul>
-<li>错误和警告标志</li>
-</ul>
-<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> g:ale_sign_error = <span class="hljs-string">'x'</span>
-<span class="hljs-keyword">let</span> g:ale_sign_warning = <span class="hljs-string">'!'</span></code></pre>
-<ul>
-<li>文件保存时，显示警告</li>
-</ul>
-<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> g:ale_lint_on_text_changed = <span class="hljs-string">'never'</span>
-<span class="hljs-keyword">let</span> g:ale_lint_on_enter = <span class="hljs-number">0</span></code></pre>
-<ul>
-<li>使用clang对c和c++进行语法检查，对python使用pylint进行语法检查</li>
-</ul>
-<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> g:ale_linters = {
-\   <span class="hljs-string">'c++'</span>: [<span class="hljs-string">'clang'</span>],
-\   <span class="hljs-string">'c'</span>: [<span class="hljs-string">'clang'</span>],
-\   <span class="hljs-string">'python'</span>: [<span class="hljs-string">'pylint'</span>],
-\}</code></pre>
-<p>使用clang分析的话，确保clang已经安装, 如若没有安装，即可运行如下命令进行安装</p>
-<pre><code class="hljs cmake">sudo apt-get <span class="hljs-keyword">install</span> clang</code></pre>
-<ul>
-<li>效果图</li>
-</ul>
-<p><img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190421121131760-704582451.png"></p>
-<p><img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190421121140752-1595005892.png"></p>
-<h1 id="补全代码块">2. 补全代码块</h1>
-<ul>
-<li>安装</li>
-</ul>
-<pre><code class="hljs nginx"><span class="hljs-attribute">Plug</span> <span class="hljs-string">'SirVer/ultisnips'</span>
-Plug <span class="hljs-string">'honza/vim-snippets'</span></code></pre>
-<ul>
-<li>配置</li>
-</ul>
-<pre><code class="hljs javascript"><span class="hljs-keyword">let</span> g:UltiSnipsExpandTrigger=<span class="hljs-string">"&lt;tab&gt;"</span>
-<span class="hljs-keyword">let</span> g:UltiSnipsJumpForwardTrigger=<span class="hljs-string">"&lt;c-h&gt;"</span>
-<span class="hljs-keyword">let</span> g:UltiSnipsJumpBackwardTrigger=<span class="hljs-string">"&lt;c-l&gt;"</span></code></pre>
-<p>使用vim打开文件，输入<code>main</code>，然后敲 tab，会有如下效果</p>
-<p><img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190421121415741-922091824.png"></p>
-<p><strong>注</strong>：插件有默认的代码块模板，若是需要自定义，则去<code>~/.vim/plugged/vim-snippets</code> 路径下修改。</p>
-<h1 id="symbol-管理器-taglist.vim">3. symbol 管理器 taglist.vim</h1>
-<p><code>taglist.vim</code> 插件依赖ctags，所有首先得安装ctags。</p>
-<p><strong>安装ctags</strong>：</p>
-<pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> sudo apt install -y exuberant-ctags</span></code></pre>
-<p><strong>在.vimrc上配置</strong>：</p>
-<pre><code class="hljs sql"><span class="hljs-keyword">set</span> tags=./.tags;,.tags</code></pre>
-<p><strong>安装taglist.vim插件</strong>：</p>
-<pre><code class="hljs nginx"><span class="hljs-attribute">Plug</span> <span class="hljs-string">'vim-scripts/taglist.vim'</span></code></pre>
-<p><strong>插件配置</strong>：</p>
-<pre><code class="hljs ruby">map &lt;silent&gt; &lt;F1<span class="hljs-number">0</span>&gt; <span class="hljs-symbol">:TlistToggle&lt;cr&gt;</span></code></pre>
-<p><strong>效果图</strong>：</p>
-<p><code>normal</code>模式下按下<code>&lt;F10&gt;</code><br>
-出现如下效果</p>
-<p><img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190421121213957-1075106964.png"></p>
-<p><strong>自动更新symbol</strong>：</p>
-<p>使用<code>vim-gutentags</code> 自动更新tags文件。</p>
-<p><strong>安装vim-gutentags插件</strong>：</p>
-<pre><code class="hljs nginx"><span class="hljs-attribute">Plug</span> <span class="hljs-string">'ludovicchabant/vim-gutentags'</span></code></pre>
-<p><strong>配置插件</strong></p>
-<pre><code class="hljs bash"><span class="hljs-string">" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+<attachment contenteditable="false" data-atts="%5B%5D" data-aid=".atts-ded546f1-37e7-484f-b670-9fd1b590a7ec"></attachment><h1><a href="https://www.cnblogs.com/standardzero/p/10744648.html" target="_blank">7. VIM 系列 - 程序员利器（语法检测、代码块补全、symbol管理、函数跳转）</a></h1><p>目录</p><p><br></p><ul><li><a href="about:blank" target="_blank">1. 语法检查利器 ale</a></li><li><a href="about:blank" target="_blank">2. 补全代码块</a></li><li><a href="about:blank" target="_blank">3. symbol 管理器 taglist.vim</a></li><li><a href="about:blank" target="_blank">4. 函数跳转</a></li></ul><h1>1. 语法检查利器 ale</h1><p><strong>安装 ale</strong></p><p><br></p><pre class="ql-syntax" spellcheck="false">Plug 'w0rp/ale'
+</pre><p><strong>配置</strong></p><p><br></p><ul><li>显示状态栏+不需要高亮行</li></ul><pre class="ql-syntax" spellcheck="false">let g:ale_sign_column_always = 1
+let g:ale_set_highlights = 0
+</pre><ul><li>错误和警告标志</li></ul><pre class="ql-syntax" spellcheck="false">let g:ale_sign_error = 'x'
+let g:ale_sign_warning = '!'
+</pre><ul><li>文件保存时，显示警告</li></ul><pre class="ql-syntax" spellcheck="false">let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+</pre><ul><li>使用clang对c和c++进行语法检查，对python使用pylint进行语法检查</li></ul><pre class="ql-syntax" spellcheck="false">let g:ale_linters = {
+\   'c++': ['clang'],
+\   'c': ['clang'],
+\   'python': ['pylint'],
+\}
+</pre><p>使用clang分析的话，确保clang已经安装, 如若没有安装，即可运行如下命令进行安装</p><p><br></p><pre class="ql-syntax" spellcheck="false">sudo apt-get install clang
+</pre><ul><li>效果图</li></ul><p><img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190421121131760-704582451.png"></p><p><img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190421121140752-1595005892.png"></p><p><br></p><h1>2. 补全代码块</h1><ul><li>安装</li></ul><pre class="ql-syntax" spellcheck="false">Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+</pre><ul><li>配置</li></ul><pre class="ql-syntax" spellcheck="false">let g:UltiSnipsExpandTrigger="&lt;tab&gt;"
+let g:UltiSnipsJumpForwardTrigger="&lt;c-h&gt;"
+let g:UltiSnipsJumpBackwardTrigger="&lt;c-l&gt;"
+</pre><p>使用vim打开文件，输入<code>main</code>，然后敲 tab，会有如下效果</p><p><img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190421121415741-922091824.png"></p><p><strong>注</strong>：插件有默认的代码块模板，若是需要自定义，则去<code>~/.vim/plugged/vim-snippets</code> 路径下修改。</p><p><br></p><h1>3. symbol 管理器 taglist.vim</h1><p><code>taglist.vim</code> 插件依赖ctags，所有首先得安装ctags。</p><p><strong>安装ctags</strong>：</p><p><br></p><pre class="ql-syntax" spellcheck="false">$ sudo apt install -y exuberant-ctags
+</pre><p><strong>在.vimrc上配置</strong>：</p><p><br></p><pre class="ql-syntax" spellcheck="false">set tags=./.tags;,.tags
+</pre><p><strong>安装taglist.vim插件</strong>：</p><p><br></p><pre class="ql-syntax" spellcheck="false">Plug 'vim-scripts/taglist.vim'
+</pre><p><strong>插件配置</strong>：</p><p><br></p><pre class="ql-syntax" spellcheck="false">map &lt;silent&gt; &lt;F10&gt; :TlistToggle&lt;cr&gt;
+</pre><p><strong>效果图</strong>：</p><p><code>normal</code>模式下按下<code>&lt;F10&gt;</code></p><p> 出现如下效果</p><p><img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190421121213957-1075106964.png"></p><p><strong>自动更新symbol</strong>：</p><p>使用<code>vim-gutentags</code> 自动更新tags文件。</p><p><strong>安装vim-gutentags插件</strong>：</p><p><br></p><pre class="ql-syntax" spellcheck="false">Plug 'ludovicchabant/vim-gutentags'
+</pre><p><strong>配置插件</strong></p><p><br></p><pre class="ql-syntax" spellcheck="false">" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
 let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
 
-"</span> 所生成的数据文件的名称
-<span class="hljs-built_in">let</span> g:gutentags_ctags_tagfile = <span class="hljs-string">'.tags'</span>
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
 
-<span class="hljs-string">" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
 let s:vim_tags = expand('~/.cache/tags')
 let g:gutentags_cache_dir = s:vim_tags
 
-"</span> 配置 ctags 的参数
-<span class="hljs-built_in">let</span> g:gutentags_ctags_extra_args = [<span class="hljs-string">'--fields=+niazS'</span>, <span class="hljs-string">'--extra=+q'</span>]
-<span class="hljs-built_in">let</span> g:gutentags_ctags_extra_args += [<span class="hljs-string">'--c++-kinds=+px'</span>]
-<span class="hljs-built_in">let</span> g:gutentags_ctags_extra_args += [<span class="hljs-string">'--c-kinds=+px'</span>]
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
-<span class="hljs-string">" 检测 ~/.cache/tags 不存在就新建
+" 检测 ~/.cache/tags 不存在就新建
 if !isdirectory(s:vim_tags)
    silent! call mkdir(s:vim_tags, 'p')
-endif</span></code></pre>
-<p><strong>注</strong>：gutentags 需要靠上面定义的 project_root 里的标志，判断文件所在的工程，如果一个文件没有托管在 .git/.svn 中，gutentags 找不到工程目录的话，就不会为该野文件生成 tags，这也很合理。想要避免的话，你可以在你的野文件目录中放一个名字为 .root 的空白文件，主动告诉 gutentags 这里就是工程目录。</p>
-<p><strong>更新symbol</strong>：</p>
-<pre><code class="hljs javascript"><span class="hljs-function"><span class="hljs-keyword">function</span>! <span class="hljs-title">UpdateCtags</span>(<span class="hljs-params"></span>)
-    <span class="hljs-title">TlistUpdate</span>
-<span class="hljs-title">endfunction</span>
+endif
+</pre><p><strong>注</strong>：gutentags 需要靠上面定义的 project_root 里的标志，判断文件所在的工程，如果一个文件没有托管在 .git/.svn 中，gutentags 找不到工程目录的话，就不会为该野文件生成 tags，这也很合理。想要避免的话，你可以在你的野文件目录中放一个名字为 .root 的空白文件，主动告诉 gutentags 这里就是工程目录。</p><p><strong>更新symbol</strong>：</p><p><br></p><pre class="ql-syntax" spellcheck="false">function! UpdateCtags()
+    TlistUpdate
+endfunction
 
-<span class="hljs-title">autocmd</span> <span class="hljs-title">BufWritePost</span> *.<span class="hljs-title">c</span>,*.<span class="hljs-title">h</span>,*.<span class="hljs-title">cpp</span> <span class="hljs-title">call</span> <span class="hljs-title">UpdateCtags</span>(<span class="hljs-params"></span>)</span></code></pre>
-<p>保存文件时候，更新symbol。</p>
-<h1 id="函数跳转">4. 函数跳转</h1>
-<p>函数跳转也是用到了tags文件，symbol管理已经将相关环境安装好了。</p>
-<p><code>&lt;c-]&gt;</code>：跳转到定义处。</p>
-<p><code>&lt;c-t&gt;</code>：往回跳转</p>
-<p><code>&lt;c-w&gt;]</code>：新建一个窗口，并显示定义。</p>
-<p><code>&lt;c-w&gt;c</code>：关闭窗口</p></div><div id="MySignature"></div>
-<div class="clear"></div>
-<div id="blog_post_info_block">
-<div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/standardzero/category/1441021.html" target="_blank">VIM 系列</a></div>
-<div id="EntryTag"></div>
-<div id="blog_post_info"><div id="green_channel">
-        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(10744648,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
-            <a id="green_channel_follow" onclick="follow('d690dccd-a66b-495f-b726-08d5cabb872d');" href="javascript:void(0);">关注我</a>
-    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
-    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="//common.cnblogs.com/images/icon_weibo_24.png" alt=""></a>
-    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="//common.cnblogs.com/images/wechat.png" alt=""></a>
-</div>
-<div id="author_profile">
-    <div id="author_profile_info" class="author_profile_info">
-            <a href="https://home.cnblogs.com/u/standardzero/" target="_blank"><img src="//pic.cnblogs.com/face/sample_face.gif" class="author_avatar" alt=""></a>
-        <div id="author_profile_detail" class="author_profile_info">
-            <a href="https://home.cnblogs.com/u/standardzero/">standardzero</a><br>
-            <a href="https://home.cnblogs.com/u/standardzero/followees">关注 - 0</a><br>
-            <a href="https://home.cnblogs.com/u/standardzero/followers">粉丝 - 0</a>
-        </div>
-    </div>
-    <div class="clear"></div>
-    <div id="author_profile_honor"></div>
-    <div id="author_profile_follow">
-    </div>
-</div>
-<div id="div_digg">
-    <div class="diggit" onclick="votePost(10744648,'Digg')">
-        <span class="diggnum" id="digg_count">1</span>
-    </div>
-    <div class="buryit" onclick="votePost(10744648,'Bury')">
-        <span class="burynum" id="bury_count">0</span>
-    </div>
-    <div class="clear"></div>
-    <div class="diggword" id="digg_tips">
-    </div>
-</div>
-<script type="text/javascript">
-    currentDiggType = 0;
-</script></div>
-<div class="clear"></div>
-<div id="post_next_prev"><a href="https://www.cnblogs.com/standardzero/p/10727689.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/standardzero/p/10727689.html" title="发布于2019-04-18 09:38">0. VIM 系列 - 源码升级最新版本vim</a><br><a href="https://www.cnblogs.com/standardzero/p/10744863.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/standardzero/p/10744863.html" title="发布于2019-04-21 13:30">9. VIM 系列 - YouCompleteMe 实现代码补全</a><br></div>
-</div>
-
-
-		</div>
-		<div class="postDesc">posted @ <span id="post-date">2019-04-21 12:14</span> <a href="https://www.cnblogs.com/standardzero/">standardzero</a> 阅读(<span id="post_view_count">161</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=10744648" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(10744648);return false;">收藏</a></div>
-	</div>
-	<script src="//common.cnblogs.com/highlight/9.12.0/highlight.min.js"></script><script>markdown_highlight();</script><script type="text/javascript">var allowComments=true,cb_blogId=437382,cb_entryId=10744648,cb_blogApp=currentBlogApp,cb_blogUserGuid='d690dccd-a66b-495f-b726-08d5cabb872d',cb_entryCreatedDate='2019/4/21 12:14:00';loadViewCount(cb_entryId);var cb_postType=1;var isMarkdown=true;</script>
-	
+autocmd BufWritePost *.c,*.h,*.cpp call UpdateCtags()
+</pre><p>保存文件时候，更新symbol。</p><p><br></p><h1>4. 函数跳转</h1><p>函数跳转也是用到了tags文件，symbol管理已经将相关环境安装好了。</p><p><code>&lt;c-]&gt;</code>：跳转到定义处。</p><p><code>&lt;c-t&gt;</code>：往回跳转</p><p><code>&lt;c-w&gt;]</code>：新建一个窗口，并显示定义。</p><p><code>&lt;c-w&gt;c</code>：关闭窗口</p><p> 分类: <a href="https://www.cnblogs.com/standardzero/category/1441021.html" target="_blank">VIM 系列</a></p><p><a href="about:blank" target="_blank">好文要顶关注我收藏该文<img src="//:0"><img src="//:0"></a></p><p><a href="https://home.cnblogs.com/u/standardzero/" target="_blank"><img src="//:0"></a></p><p><a href="https://home.cnblogs.com/u/standardzero/" target="_blank">standardzero</a></p><p><a href="https://home.cnblogs.com/u/standardzero/followees" target="_blank">关注 - 0</a></p><p><a href="https://home.cnblogs.com/u/standardzero/followers" target="_blank">粉丝 - 0</a></p><p>1</p><p>0</p><p> currentDiggType = 0; </p><p><a href="https://www.cnblogs.com/standardzero/p/10727689.html" target="_blank">« </a> 上一篇：<a href="https://www.cnblogs.com/standardzero/p/10727689.html" target="_blank">0. VIM 系列 - 源码升级最新版本vim</a></p><p><a href="https://www.cnblogs.com/standardzero/p/10744863.html" target="_blank">» </a> 下一篇：<a href="https://www.cnblogs.com/standardzero/p/10744863.html" target="_blank">9. VIM 系列 - YouCompleteMe 实现代码补全</a></p><p>posted @ 2019-04-21 12:14 <a href="https://www.cnblogs.com/standardzero/" target="_blank">standardzero</a> 阅读(161) 评论(0) <a href="https://i.cnblogs.com/EditPosts.aspx?postid=10744648" target="_blank">编辑</a> <a href="about:blank" target="_blank">收藏</a></p><p>markdown_highlight();var allowComments=true,cb_blogId=437382,cb_entryId=10744648,cb_blogApp=currentBlogApp,cb_blogUserGuid='d690dccd-a66b-495f-b726-08d5cabb872d',cb_entryCreatedDate='2019/4/21 12:14:00';loadViewCount(cb_entryId);var cb_postType=1;var isMarkdown=true;</p><p><br></p>

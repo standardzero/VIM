@@ -1,111 +1,37 @@
-
-	<div class="post">
-		<h1 class="postTitle">
-			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/standardzero/p/10744863.html">9. VIM 系列 - YouCompleteMe 实现代码补全</a>
-		</h1>
-		<div class="clear"></div>
-		<div class="postBody">
-			<div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown"><div class="toc">
-    <p class="toc-title">目录</p>
-    <div class="toc-list">
-        <ul>
-        <li><a href="#环境准备">环境准备</a></li>
-        <li><a href="#插件安装">插件安装</a></li>
-        </ul>
-    </div>
-</div>
-<h1 id="环境准备">环境准备</h1>
-<pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> sudo apt install build-essential cmake python3-dev  python-dev</span>
-<span class="hljs-meta">$</span><span class="bash"> sudo apt install clang libclang-dev</span></code></pre>
-<h1 id="插件安装">插件安装</h1>
-<p><strong>插件安装</strong>：</p>
-<pre><code class="hljs nginx"><span class="hljs-attribute">Plug</span> <span class="hljs-string">'Valloric/YouCompleteMe'</span></code></pre>
-<p><strong>编译插件</strong>：</p>
-<pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash">  <span class="hljs-built_in">cd</span> ~/.vim/plugged/YouCompleteMe</span>
-<span class="hljs-meta">$</span><span class="bash"> ./install.py --clang-completer</span></code></pre>
-<p><strong>配置插件</strong>：</p>
-<pre><code class="hljs bash"><span class="hljs-built_in">let</span> g:ycm_add_preview_to_completeopt = 0
-<span class="hljs-built_in">let</span> g:ycm_show_diagnostics_ui = 0
-<span class="hljs-built_in">let</span> g:ycm_server_log_level = <span class="hljs-string">'info'</span>
-<span class="hljs-built_in">let</span> g:ycm_min_num_identifier_candidate_chars = 2
-<span class="hljs-built_in">let</span> g:ycm_collect_identifiers_from_comments_and_strings = 1
-<span class="hljs-built_in">let</span> g:ycm_complete_in_strings=1
-<span class="hljs-built_in">let</span> g:ycm_key_invoke_completion = <span class="hljs-string">'&lt;c-z&gt;'</span>
+<attachment contenteditable="false" data-atts="%5B%5D" data-aid=".atts-b8d9bd64-69f1-4eec-b14f-a43344184adb"></attachment><h1><a href="https://www.cnblogs.com/standardzero/p/10744863.html" target="_blank">9. VIM 系列 - YouCompleteMe 实现代码补全</a></h1><p>目录</p><p><br></p><ul><li><a href="about:blank" target="_blank">环境准备</a></li><li><a href="about:blank" target="_blank">插件安装</a></li></ul><h1>环境准备</h1><pre class="ql-syntax" spellcheck="false">$ sudo apt install build-essential cmake python3-dev  python-dev
+$ sudo apt install clang libclang-dev
+</pre><h1>插件安装</h1><p><strong>插件安装</strong>：</p><p><br></p><pre class="ql-syntax" spellcheck="false">Plug 'Valloric/YouCompleteMe'
+</pre><p><strong>编译插件</strong>：</p><p><br></p><pre class="ql-syntax" spellcheck="false">$  cd ~/.vim/plugged/YouCompleteMe
+$ ./install.py --clang-completer
+</pre><p><strong>配置插件</strong>：</p><p><br></p><pre class="ql-syntax" spellcheck="false">let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_server_log_level = 'info'
+let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_complete_in_strings=1
+let g:ycm_key_invoke_completion = '&lt;c-z&gt;'
 highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
 highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
-<span class="hljs-built_in">set</span> completeopt=menu,menuone
+set completeopt=menu,menuone
 
 noremap &lt;c-z&gt; &lt;NOP&gt;
 
-<span class="hljs-built_in">let</span> g:ycm_semantic_triggers =  {
-            \ <span class="hljs-string">'c,cpp,python,java,go,erlang,perl'</span>: [<span class="hljs-string">'re!\w{2}'</span>],
-            \ <span class="hljs-string">'cs,lua,javascript'</span>: [<span class="hljs-string">'re!\w{2}'</span>],
+let g:ycm_semantic_triggers =  {
+            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+            \ 'cs,lua,javascript': ['re!\w{2}'],
             \ }
 
-<span class="hljs-built_in">let</span> g:ycm_filetype_whitelist = { 
-            \ <span class="hljs-string">"c"</span>:1,
-            \ <span class="hljs-string">"cpp"</span>:1, 
-            \ <span class="hljs-string">"objc"</span>:1,
-            \ <span class="hljs-string">"sh"</span>:1,
-            \ <span class="hljs-string">"zsh"</span>:1,
-            \ <span class="hljs-string">"zimbu"</span>:1,
+let g:ycm_filetype_whitelist = { 
+            \ "c":1,
+            \ "cpp":1, 
+            \ "objc":1,
+            \ "sh":1,
+            \ "zsh":1,
+            \ "zimbu":1,
             \ }
             
-<span class="hljs-built_in">let</span> g:ycm_global_ycm_extra_conf=<span class="hljs-string">'~/.ycm_extra_conf.py'</span>
+let g:ycm_global_ycm_extra_conf='~/.ycm_extra_conf.py'
 
-<span class="hljs-built_in">let</span> g:ycm_confirm_extra_conf = 0</code></pre>
-<p><strong>指定.ycm_extra_conf.py路径</strong>:</p>
-<p>将 <code>.ycm_extra_conf.py</code> 拷贝到<code>home</code> 目录</p>
-<pre><code class="hljs groovy">$ cp <span class="hljs-regexp">~/.vim/</span>plugged<span class="hljs-regexp">/YouCompleteMe/</span>third_party<span class="hljs-regexp">/ycmd/</span>.ycm_extra_conf.py ~/</code></pre>
-<p><strong>自定义.ycm_extra_conf.py</strong>: 一个项目应该有一个自定义的配置，这样才能语义补全，将自定义好的配置放到项目的根目录即可。</p>
-<p><strong>效果图</strong>：<br>
-<img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190421132854219-931296190.png"></p></div><div id="MySignature"></div>
-<div class="clear"></div>
-<div id="blog_post_info_block">
-<div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/standardzero/category/1441021.html" target="_blank">VIM 系列</a></div>
-<div id="EntryTag"></div>
-<div id="blog_post_info"><div id="green_channel">
-        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(10744863,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
-            <a id="green_channel_follow" onclick="follow('d690dccd-a66b-495f-b726-08d5cabb872d');" href="javascript:void(0);">关注我</a>
-    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
-    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="//common.cnblogs.com/images/icon_weibo_24.png" alt=""></a>
-    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="//common.cnblogs.com/images/wechat.png" alt=""></a>
-</div>
-<div id="author_profile">
-    <div id="author_profile_info" class="author_profile_info">
-            <a href="https://home.cnblogs.com/u/standardzero/" target="_blank"><img src="//pic.cnblogs.com/face/sample_face.gif" class="author_avatar" alt=""></a>
-        <div id="author_profile_detail" class="author_profile_info">
-            <a href="https://home.cnblogs.com/u/standardzero/">standardzero</a><br>
-            <a href="https://home.cnblogs.com/u/standardzero/followees">关注 - 0</a><br>
-            <a href="https://home.cnblogs.com/u/standardzero/followers">粉丝 - 0</a>
-        </div>
-    </div>
-    <div class="clear"></div>
-    <div id="author_profile_honor"></div>
-    <div id="author_profile_follow">
-    </div>
-</div>
-<div id="div_digg">
-    <div class="diggit" onclick="votePost(10744863,'Digg')">
-        <span class="diggnum" id="digg_count">0</span>
-    </div>
-    <div class="buryit" onclick="votePost(10744863,'Bury')">
-        <span class="burynum" id="bury_count">0</span>
-    </div>
-    <div class="clear"></div>
-    <div class="diggword" id="digg_tips">
-    </div>
-</div>
-<script type="text/javascript">
-    currentDiggType = 0;
-</script></div>
-<div class="clear"></div>
-<div id="post_next_prev"><a href="https://www.cnblogs.com/standardzero/p/10744648.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/standardzero/p/10744648.html" title="发布于2019-04-21 12:14">7. VIM 系列 - 程序员利器（语法检测、代码块补全、symbol管理、函数跳转）</a><br><a href="https://www.cnblogs.com/standardzero/p/10781223.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/standardzero/p/10781223.html" title="发布于2019-04-28 00:15">2. CMake 系列 - 编译多文件项目</a><br></div>
-</div>
-
-
-		</div>
-		<div class="postDesc">posted @ <span id="post-date">2019-04-21 13:30</span> <a href="https://www.cnblogs.com/standardzero/">standardzero</a> 阅读(<span id="post_view_count">14</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=10744863" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(10744863);return false;">收藏</a></div>
-	</div>
-	<script src="//common.cnblogs.com/highlight/9.12.0/highlight.min.js"></script><script>markdown_highlight();</script><script type="text/javascript">var allowComments=true,cb_blogId=437382,cb_entryId=10744863,cb_blogApp=currentBlogApp,cb_blogUserGuid='d690dccd-a66b-495f-b726-08d5cabb872d',cb_entryCreatedDate='2019/4/21 13:30:00';loadViewCount(cb_entryId);var cb_postType=1;var isMarkdown=true;</script>
-	
+let g:ycm_confirm_extra_conf = 0
+</pre><p><strong>指定.ycm_extra_conf.py路径</strong>:</p><p>将 <code>.ycm_extra_conf.py</code> 拷贝到<code>home</code> 目录</p><p><br></p><pre class="ql-syntax" spellcheck="false">$ cp ~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py ~/
+</pre><p><strong>自定义.ycm_extra_conf.py</strong>: 一个项目应该有一个自定义的配置，这样才能语义补全，将自定义好的配置放到项目的根目录即可。</p><p><strong>效果图</strong>：</p><p> <img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190421132854219-931296190.png"></p><p> 分类: <a href="https://www.cnblogs.com/standardzero/category/1441021.html" target="_blank">VIM 系列</a></p><p><a href="about:blank" target="_blank">好文要顶关注我收藏该文<img src="//:0"><img src="//:0"></a></p><p><a href="https://home.cnblogs.com/u/standardzero/" target="_blank"><img src="//:0"></a></p><p><a href="https://home.cnblogs.com/u/standardzero/" target="_blank">standardzero</a></p><p><a href="https://home.cnblogs.com/u/standardzero/followees" target="_blank">关注 - 0</a></p><p><a href="https://home.cnblogs.com/u/standardzero/followers" target="_blank">粉丝 - 0</a></p><p>0</p><p>0</p><p> currentDiggType = 0; </p><p><a href="https://www.cnblogs.com/standardzero/p/10744648.html" target="_blank">« </a> 上一篇：<a href="https://www.cnblogs.com/standardzero/p/10744648.html" target="_blank">7. VIM 系列 - 程序员利器（语法检测、代码块补全、symbol管理、函数跳转）</a></p><p><a href="https://www.cnblogs.com/standardzero/p/10781223.html" target="_blank">» </a> 下一篇：<a href="https://www.cnblogs.com/standardzero/p/10781223.html" target="_blank">2. CMake 系列 - 编译多文件项目</a></p><p>posted @ 2019-04-21 13:30 <a href="https://www.cnblogs.com/standardzero/" target="_blank">standardzero</a> 阅读(14) 评论(0) <a href="https://i.cnblogs.com/EditPosts.aspx?postid=10744863" target="_blank">编辑</a> <a href="about:blank" target="_blank">收藏</a></p><p>markdown_highlight();var allowComments=true,cb_blogId=437382,cb_entryId=10744863,cb_blogApp=currentBlogApp,cb_blogUserGuid='d690dccd-a66b-495f-b726-08d5cabb872d',cb_entryCreatedDate='2019/4/21 13:30:00';loadViewCount(cb_entryId);var cb_postType=1;var isMarkdown=true;</p><p><br></p>
