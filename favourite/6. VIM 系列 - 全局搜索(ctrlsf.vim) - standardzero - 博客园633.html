@@ -1,0 +1,103 @@
+
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/standardzero/p/10721985.html">6. VIM 系列 - 全局搜索(ctrlsf.vim)</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown"><div class="toc">
+    <p class="toc-title">目录</p>
+    <div class="toc-list">
+        <ul>
+        <li><a href="#全局搜索利器-ag.vim">全局搜索利器 ag.vim</a></li>
+        <li><a href="#更强大的全局搜索利器-ctrlsf.vim">更强大的全局搜索利器 ctrlsf.vim</a></li>
+        </ul>
+    </div>
+</div>
+<h1 id="全局搜索利器-ag.vim">全局搜索利器 ag.vim</h1>
+<ul>
+<li><p>终端上安装ag: <code>sudo apt install silversearcher-ag</code></p></li>
+<li><p>vim 上安装插件ag.vim</p></li>
+</ul>
+<pre><code class="hljs nginx"><span class="hljs-attribute">Plug</span> <span class="hljs-string">'vim-scripts/ag.vim'</span> </code></pre>
+<ul>
+<li>配置</li>
+</ul>
+<pre><code class="hljs ruby">map &lt;s-a&gt; <span class="hljs-symbol">:Ag&lt;Space&gt;</span>
+let <span class="hljs-symbol">g:</span>ackprg = <span class="hljs-string">'ag --nogroup --nocolor --column'</span></code></pre>
+<ul>
+<li>使用效果图</li>
+</ul>
+<p>正常模式下，按下<code>&lt;s-a&gt;</code></p>
+<p><img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190417103755586-1240339615.png"></p>
+<h1 id="更强大的全局搜索利器-ctrlsf.vim">更强大的全局搜索利器 ctrlsf.vim</h1>
+<p>这个插件依赖ag，需按照ag后，才能使用</p>
+<ul>
+<li>vim 上安装插件 ctrlsf.vim</li>
+</ul>
+<pre><code class="hljs nginx"><span class="hljs-attribute">Plug</span> <span class="hljs-string">'dyng/ctrlsf.vim'</span></code></pre>
+<ul>
+<li>配置</li>
+</ul>
+<pre><code class="hljs xml">nnoremap <span class="hljs-tag">&lt;<span class="hljs-name">Leader</span>&gt;</span>f :CtrlSF<span class="hljs-tag">&lt;<span class="hljs-name">Space</span>&gt;</span>
+map <span class="hljs-tag">&lt;<span class="hljs-name">s-j</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">c-j</span>&gt;</span>p
+map <span class="hljs-tag">&lt;<span class="hljs-name">s-k</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">c-k</span>&gt;</span>p 
+let g:ctrlsf_default_view_mode = 'compact'</code></pre>
+<ul>
+<li>常用快捷键</li>
+</ul>
+<p><img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190417103801869-353610164.png"></p>
+<ul>
+<li>超级好用热键</li>
+</ul>
+<p><code>&lt;s-j&gt;</code>：跳转到下一个预览<br>
+<code>&lt;s-k&gt;</code>：跳转到上一个预览</p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/standardzero/category/1441021.html" target="_blank">VIM 系列</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(10721985,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow('d690dccd-a66b-495f-b726-08d5cabb872d');" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="//common.cnblogs.com/images/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="//common.cnblogs.com/images/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/standardzero/" target="_blank"><img src="//pic.cnblogs.com/face/sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/standardzero/">standardzero</a><br>
+            <a href="https://home.cnblogs.com/u/standardzero/followees">关注 - 0</a><br>
+            <a href="https://home.cnblogs.com/u/standardzero/followers">粉丝 - 0</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(10721985,'Digg')">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(10721985,'Bury')">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/standardzero/p/10721257.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/standardzero/p/10721257.html" title="发布于2019-04-17 07:44">5. VIM 系列 - 文件管理</a><br><a href="https://www.cnblogs.com/standardzero/p/10727689.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/standardzero/p/10727689.html" title="发布于2019-04-18 09:38">0. VIM 系列 - 源码升级最新版本vim</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2019-04-17 10:38</span> <a href="https://www.cnblogs.com/standardzero/">standardzero</a> 阅读(<span id="post_view_count">22</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=10721985" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(10721985);return false;">收藏</a></div>
+	</div>
+	<script src="//common.cnblogs.com/highlight/9.12.0/highlight.min.js"></script><script>markdown_highlight();</script><script type="text/javascript">var allowComments=true,cb_blogId=437382,cb_entryId=10721985,cb_blogApp=currentBlogApp,cb_blogUserGuid='d690dccd-a66b-495f-b726-08d5cabb872d',cb_entryCreatedDate='2019/4/17 10:38:00';loadViewCount(cb_entryId);var cb_postType=1;var isMarkdown=true;</script>
+	
