@@ -1,0 +1,115 @@
+
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/standardzero/p/10721257.html">5. VIM 系列 - 文件管理</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown"><div class="toc">
+    <p class="toc-title">目录</p>
+    <div class="toc-list">
+        <ul>
+        <li><a href="#目录树">目录树</a></li>
+        <li><a href="#文件检索">文件检索</a><ul>
+        <li><a href="#ctrlp.vim">ctrlp.vim</a></li>
+        <li><a href="#fzf.vim">fzf.vim</a></li>
+        </ul></li>
+        </ul>
+    </div>
+</div>
+<h1 id="目录树">目录树</h1>
+<ul>
+<li>安装 nerdtree.vim 插件</li>
+</ul>
+<pre><code class="hljs javascript">Plug <span class="hljs-string">'scrooloose/nerdtree'</span>, { <span class="hljs-string">'on'</span>:  <span class="hljs-string">'NERDTreeToggle'</span> }   </code></pre>
+<ul>
+<li>配置插件</li>
+</ul>
+<pre><code class="hljs ruby">let NERDTreeWinPos=<span class="hljs-string">"right"</span>
+noremap &lt;F11&gt; <span class="hljs-symbol">:NERDTreeToggle&lt;CR&gt;</span>
+let <span class="hljs-symbol">g:</span>NERDTreeDirArrowExpandable = <span class="hljs-string">'▸'</span>
+let <span class="hljs-symbol">g:</span>NERDTreeDirArrowCollapsible = <span class="hljs-string">'▾'</span></code></pre>
+<p>按下<f11>, vim 左侧会弹出目录管理窗口</f11></p>
+<p><img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190417075315128-2004240460.png"></p>
+<h1 id="文件检索">文件检索</h1>
+<h2 id="ctrlp.vim">ctrlp.vim</h2>
+<ul>
+<li>安装 ctrlp.vim</li>
+</ul>
+<pre><code class="hljs nginx"><span class="hljs-attribute">Plug</span> <span class="hljs-string">'kien/ctrlp.vim'</span></code></pre>
+<ul>
+<li>配置</li>
+</ul>
+<pre><code class="hljs ruby">noremap &lt;Leader&gt;p <span class="hljs-symbol">:CtrlP&lt;CR&gt;</span></code></pre>
+<ul>
+<li>使用效果</li>
+</ul>
+<p>normal 模式下，按下<code>&lt;Leader&gt;p</code></p>
+<p><img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190417075027048-181281558.png"></p>
+<h2 id="fzf.vim">fzf.vim</h2>
+<ul>
+<li>安装 fzf.vim</li>
+</ul>
+<pre><code class="hljs javascript">Plug <span class="hljs-string">'junegunn/fzf'</span>, { <span class="hljs-string">'dir'</span>: <span class="hljs-string">'~/.fzf'</span>, <span class="hljs-string">'do'</span>: <span class="hljs-string">'./install --all'</span> }
+Plug <span class="hljs-string">'junegunn/fzf.vim'</span></code></pre>
+<ul>
+<li>配置</li>
+</ul>
+<pre><code class="hljs ruby">nnoremap &lt;Leader&gt;f <span class="hljs-symbol">:Files&lt;CR&gt;</span>
+nnoremap &lt;Leader&gt;b <span class="hljs-symbol">:Buffers&lt;CR&gt;</span></code></pre>
+<ul>
+<li>使用效果</li>
+</ul>
+<p>normal 模式下，按下<code>&lt;Leader&gt;f</code></p>
+<p><img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190417075036180-1368121864.png"></p>
+<p>normal 模式下，按下<code>&lt;Leader&gt;b</code></p>
+<p><img src="https://img2018.cnblogs.com/blog/1416584/201904/1416584-20190417075156987-552437560.png"></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/standardzero/category/1441021.html" target="_blank">VIM 系列</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(10721257,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow('d690dccd-a66b-495f-b726-08d5cabb872d');" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="//common.cnblogs.com/images/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="//common.cnblogs.com/images/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/standardzero/" target="_blank"><img src="//pic.cnblogs.com/face/sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/standardzero/">standardzero</a><br>
+            <a href="https://home.cnblogs.com/u/standardzero/followees">关注 - 0</a><br>
+            <a href="https://home.cnblogs.com/u/standardzero/followers">粉丝 - 0</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(10721257,'Digg')">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(10721257,'Bury')">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/standardzero/p/10720922.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/standardzero/p/10720922.html" title="发布于2019-04-16 23:27">4. VIM 系列 - 认识VIM的缓冲区、窗口、标签页</a><br><a href="https://www.cnblogs.com/standardzero/p/10721985.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/standardzero/p/10721985.html" title="发布于2019-04-17 10:38">6. VIM 系列 - 全局搜索(ctrlsf.vim)</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2019-04-17 07:44</span> <a href="https://www.cnblogs.com/standardzero/">standardzero</a> 阅读(<span id="post_view_count">13</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=10721257" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(10721257);return false;">收藏</a></div>
+	</div>
+	<script src="//common.cnblogs.com/highlight/9.12.0/highlight.min.js"></script><script>markdown_highlight();</script><script type="text/javascript">var allowComments=true,cb_blogId=437382,cb_entryId=10721257,cb_blogApp=currentBlogApp,cb_blogUserGuid='d690dccd-a66b-495f-b726-08d5cabb872d',cb_entryCreatedDate='2019/4/17 7:44:00';loadViewCount(cb_entryId);var cb_postType=1;var isMarkdown=true;</script>
+	
