@@ -1,0 +1,136 @@
+
+			<div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown"><div class="toc">
+    <p class="toc-title">目录</p>
+    <div class="toc-list">
+        <ul>
+        <li class=""><a href="#认识模式" class="">1. 认识模式</a><ul class="">
+        <li class=""><a href="#正常模式">1.1 正常模式</a></li>
+        <li class=""><a href="#插入模式">1.2 插入模式</a></li>
+        <li class=""><a href="#命令模式" class="">1.3 命令模式</a></li>
+        <li><a href="#可视模式">1.4 可视模式</a></li>
+        </ul></li>
+        <li><a href="#常用快捷键">2. 常用快捷键</a></li>
+        </ul>
+    </div>
+</div>
+<h1 id="认识模式">1. 认识模式</h1>
+<p>vim 一共有四种模：</p>
+<pre><code class="hljs markdown"><span class="hljs-bullet">1. </span>正常模式
+<span class="hljs-bullet">2. </span>插入模式
+<span class="hljs-bullet">3. </span>命令模式
+<span class="hljs-bullet">4. </span>可视模式</code></pre>
+<h2 id="正常模式">1.1 正常模式</h2>
+<p>vim 打开一个文件时，处于正常模式。</p>
+<p>正常模式一般用来浏览文件，也可进行复制、粘贴、删除等操作。</p>
+<p>浏览文件时，可以采用一些快捷键在文本中进行跳转。</p>
+<p><strong>注</strong>：无论当前处于什么模式，按下 ESC 键 都会回到正常模式。</p>
+<h2 id="插入模式">1.2 插入模式</h2>
+<p><strong>插入模式</strong>：在正常模式下，按下(i/I/a/A)键即可进入插入模式；当我们需要编辑文本时，可以进入这个模式。</p>
+<h2 id="命令模式">1.3 命令模式</h2>
+<p><strong>命令模式</strong>：在正常模式下，按下(:)冒号即可进入命令模式，这个模式可以输入vim 的一些命令或是第三方插件的命令。</p>
+<h2 id="可视模式">1.4 可视模式</h2>
+<p><strong>可视模式</strong>：在正常模式下，按下(v)键即可进入可视模式，按上下键可以选中一块文本，然后对这个文件进行操作，和windows鼠标选中文本类似。</p>
+<h1 id="常用快捷键">2. 常用快捷键</h1>
+<p><strong>保存文件&amp;退出</strong>：</p>
+<pre><code class="hljs less"><span class="hljs-selector-pseudo">:w</span>   <span class="hljs-comment">// 保存文件</span>
+<span class="hljs-selector-pseudo">:q</span>   <span class="hljs-comment">// 退出vi</span>
+<span class="hljs-selector-pseudo">:wq</span>  <span class="hljs-comment">// 保存退出</span>
+<span class="hljs-selector-pseudo">:wq</span>! <span class="hljs-comment">// 保存强制退出</span>
+<span class="hljs-selector-pseudo">:q</span>!  <span class="hljs-comment">// 强制退出</span>
+<span class="hljs-selector-pseudo">:x</span>   <span class="hljs-comment">// 保存退出</span></code></pre>
+<p><strong>光标跳转</strong>：</p>
+<pre><code class="hljs swift"><span class="hljs-comment">//字符级</span>
+h        <span class="hljs-comment">// 左移一个字符</span>
+l        <span class="hljs-comment">// 右移一个字符</span>
+f/<span class="hljs-type">F</span>&lt;<span class="hljs-built_in">c</span>&gt;   <span class="hljs-comment">// 移动到本行下一个字符&lt;c&gt;、上一个字符&lt;c&gt;</span>
+t/<span class="hljs-type">T</span>&lt;<span class="hljs-built_in">c</span>&gt;   <span class="hljs-comment">// 移动到本行下一个字符&lt;c&gt;之前、上一个字符&lt;c&gt;之后</span>
+
+
+<span class="hljs-comment">//单词级</span>
+w  <span class="hljs-comment">// 移动到下一个单词</span>
+b  <span class="hljs-comment">// 移动到上一个单词</span>
+e  <span class="hljs-comment">// 移动到当前单词的词尾</span>
+*  <span class="hljs-comment">// 移动到下一个相同的单词</span>
+#  <span class="hljs-comment">// 移动到上一个相同的单词</span>
+
+
+<span class="hljs-comment">//行级</span>
+j     <span class="hljs-comment">// 移动到下一行</span>
+k     <span class="hljs-comment">// 移动到上一行</span>
+gg    <span class="hljs-comment">// 跳转到文本第一行</span>
+<span class="hljs-type">G</span>     <span class="hljs-comment">// 跳转到文本最后一行</span>
+&lt;n&gt;gg <span class="hljs-comment">// 跳转到第n行</span>
+&lt;n&gt;l  <span class="hljs-comment">// 跳转到本行的第n列</span>
+<span class="hljs-number">0</span>     <span class="hljs-comment">// 跳转到行首</span>
+^     <span class="hljs-comment">// 跳转到行首第一个非空格字符</span>
+$     <span class="hljs-comment">// 跳转到行尾</span>
+
+<span class="hljs-comment">//函数级</span>
+gd  <span class="hljs-comment">// 跳转到局部变量的定义处</span>
+
+
+<span class="hljs-comment">//屏幕级</span>
+&lt;<span class="hljs-type">Ctrl</span>&gt;+f <span class="hljs-comment">// 向前翻一页</span>
+&lt;<span class="hljs-type">Ctrl</span>&gt;+b <span class="hljs-comment">// 向后翻一页</span>
+&lt;<span class="hljs-type">Ctrl</span>&gt;+d <span class="hljs-comment">// 向前翻半页</span>
+&lt;<span class="hljs-type">Ctrl</span>&gt;+u <span class="hljs-comment">// 向后翻半页</span>
+</code></pre>
+<p><strong>复制、粘贴、删除</strong>：</p>
+<pre><code class="hljs javascript"><span class="hljs-comment">// 简单操作</span>
+yw  <span class="hljs-comment">// 复制单词</span>
+yy  <span class="hljs-comment">// 复制一行</span>
+dw  <span class="hljs-comment">// 删除单词</span>
+dd  <span class="hljs-comment">// 删除一行</span>
+p   <span class="hljs-comment">// 粘贴</span>
+
+
+<span class="hljs-comment">// 更复杂操作(d/y+光标移动)</span>
+
+<span class="hljs-comment">//区域操作(可视化模式选中文本 + d/y)</span>
+</code></pre>
+<p>参考<a href="http://www.cnblogs.com/zzqcn/p/4619012.html">：【vim】模式与模式切换</a></p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/standardzero/category/1441021.html" target="_blank">VIM 系列</a></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info"><div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(10687132,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+            <a id="green_channel_follow" onclick="follow('d690dccd-a66b-495f-b726-08d5cabb872d');" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="//common.cnblogs.com/images/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="//common.cnblogs.com/images/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/standardzero/" target="_blank"><img src="//pic.cnblogs.com/face/sample_face.gif" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/standardzero/">standardzero</a><br>
+            <a href="https://home.cnblogs.com/u/standardzero/followees">关注 - 0</a><br>
+            <a href="https://home.cnblogs.com/u/standardzero/followers">粉丝 - 0</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(10687132,'Digg')">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(10687132,'Bury')">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="https://www.cnblogs.com/standardzero/p/10661189.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/standardzero/p/10661189.html" title="发布于2019-04-06 11:29">Linux 下源码编译FFMEG</a><br><a href="https://www.cnblogs.com/standardzero/p/10687943.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/standardzero/p/10687943.html" title="发布于2019-04-11 10:14">修复FFMPEG 复用 PAT、PMT发送间隔小于25ms的错误</a><br></div>
+</div>
+
+
+		
