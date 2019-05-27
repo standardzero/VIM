@@ -1,175 +1,92 @@
-
-	<div class="post">
-		<h1 class="postTitle">
-			<a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/standardzero/p/10689613.html">2. VIM 系列 - 初探vim配置文件</a>
-		</h1>
-		<div class="clear"></div>
-		<div class="postBody">
-			<div id="cnblogs_post_body" class="blogpost-body cnblogs-markdown"><div class="toc">
-    <p class="toc-title">目录</p>
-    <div class="toc-list">
-        <ul>
-        <li><a href="#配置文件">配置文件</a><ul>
-        <li><a href="#vimrc">.vimrc</a></li>
-        <li><a href="#基本配置">基本配置</a></li>
-        <li><a href="#tab-键设置">tab 键设置</a></li>
-        <li><a href="#热键配置">热键配置</a></li>
-        </ul></li>
-        </ul>
-    </div>
-</div>
-<h1 id="配置文件">配置文件</h1>
-<p>刚安装vim默认配置，功能是很简单的，vim的功能很多是需要配置开启的。</p>
-<h2 id="vimrc">.vimrc</h2>
-<p>使用vim打开配置文件<code>~/.vimrc</code>, 即可配置vim。</p>
-<h2 id="基本配置">基本配置</h2>
-<pre><code class="hljs dos">
+<attachment contenteditable="false" data-atts="%5B%5D" data-aid=".atts-b42f8731-e8c7-4ff9-a138-ce1a26b102ca"></attachment><h1><a href="https://www.cnblogs.com/standardzero/p/10689613.html" target="_blank">2. VIM 系列 - 初探vim配置文件</a></h1><p>目录</p><p><br></p><ul><li><a href="about:blank" target="_blank">配置文件</a></li><li class="ql-indent-1"><a href="about:blank" target="_blank">.vimrc</a></li><li class="ql-indent-1"><a href="about:blank" target="_blank">基本配置</a></li><li class="ql-indent-1"><a href="about:blank" target="_blank">tab 键设置</a></li><li class="ql-indent-1"><a href="about:blank" target="_blank">热键配置</a></li></ul><h1>配置文件</h1><p>刚安装vim默认配置，功能是很简单的，vim的功能很多是需要配置开启的。</p><p><br></p><h2>.vimrc</h2><p>使用vim打开配置文件<code>~/.vimrc</code>, 即可配置vim。</p><p><br></p><h2>基本配置</h2><pre class="ql-syntax" spellcheck="false">
 " 设置当文件被改动时自动载入
-<span class="hljs-built_in">set</span> autoread
-<span class="hljs-built_in">set</span> autowrite
+set autoread
+set autowrite
 
 " 在处理未保存或只读文件的时候，弹出确认
-<span class="hljs-built_in">set</span> confirm
+set confirm
 " 自动缩进
-<span class="hljs-built_in">set</span> autoindent
-<span class="hljs-built_in">set</span> cindent
+set autoindent
+set cindent
 
 " 解决backspace 无效
-<span class="hljs-built_in">set</span> backspace=indent,eol,<span class="hljs-built_in">start</span>
+set backspace=indent,eol,start
 
 
 
-" 其中 tabstop 表示一个 tab 显示出来是多少个空格的长度,默认<span class="hljs-number">8</span>
+" 其中 tabstop 表示一个 tab 显示出来是多少个空格的长度,默认8
 " softtabstop 表示在编辑模式的时候按退格键的时候退回缩进的长度
 " shiftwidth 表示每一级缩进的长度，一般设置成跟 softtabstop 一样。
 " 当设置成 expandtab 时，缩进用空格来表示，noexpandtab则是用制表符表示一个缩进。
-<span class="hljs-built_in">set</span> tabstop=<span class="hljs-number">4</span>
-<span class="hljs-built_in">set</span> softtabstop=<span class="hljs-number">4</span>
-<span class="hljs-built_in">set</span> shiftwidth=<span class="hljs-number">4</span>
-<span class="hljs-built_in">set</span> expandtab
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
 
 " 显示行号
-<span class="hljs-built_in">set</span> number
+set number
 
 " 历史记录数
-<span class="hljs-built_in">set</span> history=<span class="hljs-number">1000</span>
+set history=1000
 
 "搜索忽略大小写
-<span class="hljs-built_in">set</span> ignorecase
+set ignorecase
 
 "搜索逐字符高亮
-<span class="hljs-built_in">set</span> hlsearch
-<span class="hljs-built_in">set</span> incsearch
+set hlsearch
+set incsearch
 
 "语言设置
-<span class="hljs-built_in">set</span> encoding=utf-<span class="hljs-number">8</span>
-<span class="hljs-built_in">set</span> termencoding=utf-<span class="hljs-number">8</span>
-<span class="hljs-built_in">set</span> fileencoding=utf-<span class="hljs-number">8</span>
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
 
 " 总是显示状态行
-<span class="hljs-built_in">set</span> laststatus=<span class="hljs-number">2</span>
+set laststatus=2
 
-" 命令行（在状态行下）的高度，默认为<span class="hljs-number">1</span>，这里是<span class="hljs-number">2</span>
-<span class="hljs-built_in">set</span> cmdheight=<span class="hljs-number">2</span>
+" 命令行（在状态行下）的高度，默认为1，这里是2
+set cmdheight=2
 
 " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
-<span class="hljs-built_in">set</span> mouse=a
-<span class="hljs-built_in">set</span> selection=exclusive
-<span class="hljs-built_in">set</span> selectmode=mouse,key
+set mouse=a
+set selection=exclusive
+set selectmode=mouse,key
 
 " 高亮显示匹配的括号
-<span class="hljs-built_in">set</span> showmatch
+set showmatch
 
 " 匹配括号高亮的时间（单位是十分之一秒）
-<span class="hljs-built_in">set</span> matchtime=<span class="hljs-number">2</span>
+set matchtime=2
 
-" 光标移动到buffer的顶部和底部时保持<span class="hljs-number">3</span>行距离
-<span class="hljs-built_in">set</span> scrolloff=<span class="hljs-number">3</span>
+" 光标移动到buffer的顶部和底部时保持3行距离
+set scrolloff=3
 
-</code></pre>
-<h2 id="tab-键设置">tab 键设置</h2>
-<pre><code class="hljs cmake">
-<span class="hljs-keyword">set</span> tabstop=<span class="hljs-number">4</span>
-<span class="hljs-keyword">set</span> softtabstop=<span class="hljs-number">4</span>
-<span class="hljs-keyword">set</span> shiftwidth=<span class="hljs-number">4</span>
-<span class="hljs-keyword">set</span> expandtab
-</code></pre>
-<p><strong>说明</strong>：</p>
-<p><strong>tabstop</strong>： 表示一个 tab 显示出来是多少个空格的长度,默认8。<br>
-<strong>softtabstop</strong>： 表示在编辑模式的时候按退格键的时候退回缩进的长度。<br>
-<strong>shiftwidth</strong>： 表示每一级缩进的长度，一般设置成跟 softtabstop 一样。<br>
-<strong>expandtab</strong>： 表示缩进用空格来表示。<br>
-<strong>noexpandtab</strong> ：则是用制表符表示一个缩进。</p>
-<h2 id="热键配置">热键配置</h2>
-<pre><code class="hljs xml">" 括号自动补全
-:inoremap ( ()<span class="hljs-tag">&lt;<span class="hljs-name">ESC</span>&gt;</span>i
-:inoremap { {}<span class="hljs-tag">&lt;<span class="hljs-name">ESC</span>&gt;</span>i
-:inoremap [ []<span class="hljs-tag">&lt;<span class="hljs-name">ESC</span>&gt;</span>i
+</pre><h2>tab 键设置</h2><pre class="ql-syntax" spellcheck="false">
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+</pre><p><strong>说明</strong>：</p><p><strong>tabstop</strong>： 表示一个 tab 显示出来是多少个空格的长度,默认8。</p><p> <strong>softtabstop</strong>： 表示在编辑模式的时候按退格键的时候退回缩进的长度。</p><p> <strong>shiftwidth</strong>： 表示每一级缩进的长度，一般设置成跟 softtabstop 一样。</p><p> <strong>expandtab</strong>： 表示缩进用空格来表示。</p><p> <strong>noexpandtab</strong> ：则是用制表符表示一个缩进。</p><h2>热键配置</h2><pre class="ql-syntax" spellcheck="false">" 括号自动补全
+:inoremap ( ()&lt;ESC&gt;i
+:inoremap { {}&lt;ESC&gt;i
+:inoremap [ []&lt;ESC&gt;i
 
 " 窗口切换的快捷方式
-map <span class="hljs-tag">&lt;<span class="hljs-name">s-h</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">c-w</span>&gt;</span>h
-map <span class="hljs-tag">&lt;<span class="hljs-name">s-l</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">c-w</span>&gt;</span>l
-map <span class="hljs-tag">&lt;<span class="hljs-name">s-j</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">c-w</span>&gt;</span>j
-map <span class="hljs-tag">&lt;<span class="hljs-name">s-k</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">c-w</span>&gt;</span>k
+map &lt;s-h&gt; &lt;c-w&gt;h
+map &lt;s-l&gt; &lt;c-w&gt;l
+map &lt;s-j&gt; &lt;c-w&gt;j
+map &lt;s-k&gt; &lt;c-w&gt;k
 
 " 设置热键
-let mapleader = "\<span class="hljs-tag">&lt;<span class="hljs-name">Space</span>&gt;</span>"
+let mapleader = "\&lt;Space&gt;"
 
 " 映射快捷键
-nnoremap <span class="hljs-tag">&lt;<span class="hljs-name">Leader</span>&gt;</span>w :w<span class="hljs-tag">&lt;<span class="hljs-name">CR</span>&gt;</span>
-nnoremap <span class="hljs-tag">&lt;<span class="hljs-name">Leader</span>&gt;</span>g G
+nnoremap &lt;Leader&gt;w :w&lt;CR&gt;
+nnoremap &lt;Leader&gt;g G
 
 " buffer 切换
-nnoremap <span class="hljs-tag">&lt;<span class="hljs-name">Leader</span>&gt;</span>bn :bn<span class="hljs-tag">&lt;<span class="hljs-name">CR</span>&gt;</span>
-nnoremap <span class="hljs-tag">&lt;<span class="hljs-name">Leader</span>&gt;</span>bb :bp<span class="hljs-tag">&lt;<span class="hljs-name">CR</span>&gt;</span>
+nnoremap &lt;Leader&gt;bn :bn&lt;CR&gt;
+nnoremap &lt;Leader&gt;bb :bp&lt;CR&gt;
 " 关闭buffer
-nnoremap <span class="hljs-tag">&lt;<span class="hljs-name">Leader</span>&gt;</span>bc :bwipe<span class="hljs-tag">&lt;<span class="hljs-name">CR</span>&gt;</span></code></pre></div><div id="MySignature"></div>
-<div class="clear"></div>
-<div id="blog_post_info_block">
-<div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/standardzero/category/1441021.html" target="_blank">VIM 系列</a></div>
-<div id="EntryTag"></div>
-<div id="blog_post_info"><div id="green_channel">
-        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(10689613,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
-            <a id="green_channel_follow" onclick="follow('d690dccd-a66b-495f-b726-08d5cabb872d');" href="javascript:void(0);">关注我</a>
-    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
-    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="//common.cnblogs.com/images/icon_weibo_24.png" alt=""></a>
-    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="//common.cnblogs.com/images/wechat.png" alt=""></a>
-</div>
-<div id="author_profile">
-    <div id="author_profile_info" class="author_profile_info">
-            <a href="https://home.cnblogs.com/u/standardzero/" target="_blank"><img src="//pic.cnblogs.com/face/sample_face.gif" class="author_avatar" alt=""></a>
-        <div id="author_profile_detail" class="author_profile_info">
-            <a href="https://home.cnblogs.com/u/standardzero/">standardzero</a><br>
-            <a href="https://home.cnblogs.com/u/standardzero/followees">关注 - 0</a><br>
-            <a href="https://home.cnblogs.com/u/standardzero/followers">粉丝 - 0</a>
-        </div>
-    </div>
-    <div class="clear"></div>
-    <div id="author_profile_honor"></div>
-    <div id="author_profile_follow">
-    </div>
-</div>
-<div id="div_digg">
-    <div class="diggit" onclick="votePost(10689613,'Digg')">
-        <span class="diggnum" id="digg_count">0</span>
-    </div>
-    <div class="buryit" onclick="votePost(10689613,'Bury')">
-        <span class="burynum" id="bury_count">0</span>
-    </div>
-    <div class="clear"></div>
-    <div class="diggword" id="digg_tips">
-    </div>
-</div>
-<script type="text/javascript">
-    currentDiggType = 0;
-</script></div>
-<div class="clear"></div>
-<div id="post_next_prev"><a href="https://www.cnblogs.com/standardzero/p/10687943.html" class="p_n_p_prefix">« </a> 上一篇：<a href="https://www.cnblogs.com/standardzero/p/10687943.html" title="发布于2019-04-11 10:14">修复FFMPEG 复用 PAT、PMT发送间隔小于25ms的错误</a><br><a href="https://www.cnblogs.com/standardzero/p/10692603.html" class="p_n_p_prefix">» </a> 下一篇：<a href="https://www.cnblogs.com/standardzero/p/10692603.html" title="发布于2019-04-11 21:10">3. VIM 系列 - 遇见你的第一个插件</a><br></div>
-</div>
-
-
-		</div>
-		<div class="postDesc">posted @ <span id="post-date">2019-04-11 14:45</span> <a href="https://www.cnblogs.com/standardzero/">standardzero</a> 阅读(<span id="post_view_count">13</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=10689613" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(10689613);return false;">收藏</a></div>
-	</div>
-	<script src="//common.cnblogs.com/highlight/9.12.0/highlight.min.js"></script><script>markdown_highlight();</script><script type="text/javascript">var allowComments=true,cb_blogId=437382,cb_entryId=10689613,cb_blogApp=currentBlogApp,cb_blogUserGuid='d690dccd-a66b-495f-b726-08d5cabb872d',cb_entryCreatedDate='2019/4/11 14:45:00';loadViewCount(cb_entryId);var cb_postType=1;var isMarkdown=true;</script>
-	
+nnoremap &lt;Leader&gt;bc :bwipe&lt;CR&gt;
+</pre><p> 分类: <a href="https://www.cnblogs.com/standardzero/category/1441021.html" target="_blank">VIM 系列</a></p><p><a href="about:blank" target="_blank">好文要顶关注我收藏该文<img src="//:0"><img src="//:0"></a></p><p><a href="https://home.cnblogs.com/u/standardzero/" target="_blank"><img src="//:0"></a></p><p><a href="https://home.cnblogs.com/u/standardzero/" target="_blank">standardzero</a></p><p><a href="https://home.cnblogs.com/u/standardzero/followees" target="_blank">关注 - 0</a></p><p><a href="https://home.cnblogs.com/u/standardzero/followers" target="_blank">粉丝 - 0</a></p><p>0</p><p>0</p><p> currentDiggType = 0; </p><p><a href="https://www.cnblogs.com/standardzero/p/10687943.html" target="_blank">« </a> 上一篇：<a href="https://www.cnblogs.com/standardzero/p/10687943.html" target="_blank">修复FFMPEG 复用 PAT、PMT发送间隔小于25ms的错误</a></p><p><a href="https://www.cnblogs.com/standardzero/p/10692603.html" target="_blank">» </a> 下一篇：<a href="https://www.cnblogs.com/standardzero/p/10692603.html" target="_blank">3. VIM 系列 - 遇见你的第一个插件</a></p><p>posted @ 2019-04-11 14:45 <a href="https://www.cnblogs.com/standardzero/" target="_blank">standardzero</a> 阅读(13) 评论(0) <a href="https://i.cnblogs.com/EditPosts.aspx?postid=10689613" target="_blank">编辑</a> <a href="about:blank" target="_blank">收藏</a></p><p>markdown_highlight();var allowComments=true,cb_blogId=437382,cb_entryId=10689613,cb_blogApp=currentBlogApp,cb_blogUserGuid='d690dccd-a66b-495f-b726-08d5cabb872d',cb_entryCreatedDate='2019/4/11 14:45:00';loadViewCount(cb_entryId);var cb_postType=1;var isMarkdown=true;</p><p><br></p>
